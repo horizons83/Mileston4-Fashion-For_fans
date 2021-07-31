@@ -17,10 +17,9 @@
                 Teams
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Alpha Tauri</a>
-                <a href="" class="dropdown-item">Alpine</a>
-                <a href="" class="dropdown-item">Mercedes</a>
-                <a href="" class="dropdown-item">Red Bull</a>
+                {% for team in team %}
+                    <a href="" class="dropdown-item">{{friendly_name}}</a>
+                {% endfor %}
             </div>
         </li>
 

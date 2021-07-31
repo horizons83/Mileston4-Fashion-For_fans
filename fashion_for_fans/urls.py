@@ -23,3 +23,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = 'Fashion For Fans Admin'
+admin.site.site_title = 'Fashion For Fans Admin'
