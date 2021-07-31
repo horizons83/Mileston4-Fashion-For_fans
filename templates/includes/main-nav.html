@@ -13,21 +13,23 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="teams-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Teams
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                {% for team in team %}
-                    <a href="" class="dropdown-item">{{friendly_name}}</a>
+            <div class="dropdown-menu border-0" aria-labelledby="teams-link">
+                {% for team in teams %}
+                    {% if team.name %}
+                        <a href="" class="dropdown-item">{{ team.friendly_name }}</a>
+                    {% endif %}
                 {% endfor %}
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="models-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Collectables
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="homewear-link">
+            <div class="dropdown-menu border-0" aria-labelledby="models-link">
                 <a href="" class="dropdown-item">Model Cars</a>
             </div>
         </li>
