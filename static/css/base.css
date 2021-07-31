@@ -11,6 +11,7 @@ body {
     
 }
 
+/*------ Navbar ----*/
 .top-nav,
 .navbar {
     background-color: black;
@@ -34,6 +35,15 @@ body {
     width: fit-content;
 }
 
+/*---- Delivery Banner ----*/
+
+.flash {
+    color:#000;
+	-webkit-animation: flash linear 1s infinite;
+	animation: flash linear 1s infinite;
+}
+
+/*--- Shop Now Button ---*/
 .shop-now-button {
     background: black;
     color: white;
@@ -88,4 +98,17 @@ body {
     .header-container {
         padding-top: 164px;
     }
+}
+
+/* ------- Animations ------*/
+
+@-webkit-keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
+}
+@keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
 }
