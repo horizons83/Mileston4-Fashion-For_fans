@@ -76,6 +76,28 @@ body {
     border: 1px solid black !important;
 }
 
+/* --------- Product Page -------------*/
+
+.product-overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: #fff;
+    z-index: -1;
+}
+
+.product-title {
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-text {
+    color: #555;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

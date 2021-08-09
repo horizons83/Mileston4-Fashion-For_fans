@@ -36,11 +36,7 @@
   </head>
   <body>
     <header class="container-fluid fixed-top">
-        <div id="delivery-banner" class="row text-center">
-            <div class="col bg-white text-black">
-                <h4 class="logo-font-banner my-1 flash">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
-            </div>
-        </div>
+        
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex top-nav">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -91,7 +87,7 @@
                                     {% if grand_total %}
                                         £{{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        $0.00
+                                        £0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -109,6 +105,11 @@
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
             </nav>
+        </div>
+        <div id="delivery-banner" class="row text-center">
+            <div class="col bg-white text-black">
+                <h4 class="logo-font-banner my-1 flash">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
+            </div>
         </div>
         </header>
 
