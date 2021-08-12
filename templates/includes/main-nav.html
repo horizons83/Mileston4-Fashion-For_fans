@@ -13,7 +13,7 @@
                 <a href="" class="dropdown-item">By Price</a>
                 <a href="" class="dropdown-item">By Rating</a>
                 <a href="" class="dropdown-item">By Category</a>
-                <a href="" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
 
@@ -22,11 +22,11 @@
                 Teams
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="teams-link">
-                {% for team in teams %}
-                    {% if team.name %}
-                        <a href="" class="dropdown-item">{{ team.friendly_name }}</a>
-                    {% endif %}
-                {% endfor %}
+                    {% for team in team %}
+                        {% if team.name %}
+                            <a href="" class="dropdown-item">{{ team.friendly_name }}</a>
+                        {% endif %}
+                    {% endfor %}
             </div>
         </li>
 

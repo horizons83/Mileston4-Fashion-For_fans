@@ -88,10 +88,20 @@ body {
     z-index: -1;
 }
 
+.team-banner {
+    height: 220px;
+}
+
 .product-title {
     color: #555;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.product-name-title {
+    color: #555;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .product-text {
