@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-                <div class="image-container my-5">
+                <div class="image-container my-5" id="prod-img"> 
                     {% if product.image %}
                         <a href="{{ product.image.url }}" target="_blank">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -46,4 +46,19 @@
             </div>
         </div>
     </div>
+    <script>
+        var hoverSize = [700, 700];
+            
+            $('#prod-img').hover(function() {
+                $(this).css({
+                    height: hoverSize[0],
+                    width: hoverSize[1]
+                });
+            }, function() {
+                 $(this).css({
+                    height: "",
+                    width: "",
+                });
+            });
+    </script>
 {% endblock %}

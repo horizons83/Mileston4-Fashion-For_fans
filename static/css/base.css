@@ -132,6 +132,17 @@ body {
     }
 }
 
+/* Add padding to top of products page when navbar collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
+    }
+}
+
 /* ------- Animations ------*/
 
 @-webkit-keyframes flash {
