@@ -43,7 +43,8 @@ body {
 	animation: flash linear 1s infinite;
 }
 
-/*--- Shop Now Button ---*/
+/*--- Buttons ---*/
+
 .shop-now-button {
     background: #212529;
     color: white;
@@ -55,6 +56,32 @@ body {
     color: white;
 }
 
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
+}
+
+.btn-outline-white {
+    background: black;
+    color: white !important;
+    border: 1px solid black;
+}
+
+.btn-outline-white:hover,
+.btn-outline-white:active,
+.btn-outline-white:focus {
+    background: #212520;
+    color: white !important;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -63,9 +90,27 @@ body {
 .btn-black:focus {
     background: #fff;
     color: black;
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-	transition-duration: 0s;
+}
+
+.shop-now-button:hover {
+    transition-duration: 0s;
     transform: scale(1.1);
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link {
+    cursor: pointer;
+}
+
+.btt-animation {
+    animation: up 2s infinite;
 }
 
 .text-black {
@@ -111,22 +156,6 @@ body {
 a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
-}
-
-.btt-button {
-    height: 42px;
-    width: 42px;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-}
-
-.btt-link {
-    cursor: pointer;
-}
-
-.btt-animation {
-    animation: up 2s infinite;
 }
 
 /* -------------------------------- Media Queries */
