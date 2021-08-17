@@ -14,7 +14,7 @@ body {
 /*------ Navbar ----*/
 .top-nav,
 .navbar {
-    background-color: black;
+    background-color: #212529;
 }
 
 /* from Bulma */
@@ -45,7 +45,7 @@ body {
 
 /*--- Shop Now Button ---*/
 .shop-now-button {
-    background: black;
+    background: #212529;
     color: white;
     min-width: 260px;
 }
@@ -78,7 +78,7 @@ body {
 
 /* --------- Product Page -------------*/
 
-.product-overlay {
+.overlay {
     height: 100%;
     width: 100%;
     top: 0;
