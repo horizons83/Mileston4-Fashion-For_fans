@@ -1,4 +1,5 @@
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 class Category(models.Model):
@@ -30,11 +31,15 @@ class Team(models.Model):
 
 
 class Product(models.Model):
+    Sizes = (('XS', 'X-Small'), ('S', 'Small'), ('M', 'Medium'),
+             ('L', 'Large'), ('XL', 'X-Large'))
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     team = models.ForeignKey('Team', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
+    has_sizes = models.BooleanField(default=False, null=True, blank=True)
+    size = MultiSelectField(choices=Sizes, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
