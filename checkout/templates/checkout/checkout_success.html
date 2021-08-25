@@ -19,28 +19,74 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container checkout-container">
+
+        <!-- Order confirmation infos -->
         <div class="row">
-            <div class="col">
+            <div class="col text-center">
                 <hr>
-                <h2 class="logo-font product-title mb-4">Thank You</h2>
+                <h2 class="logo-font mb-4 text-full main-font"><i class="fas fa-check-circle"></i> Thank you for your order !</h2>
                 <hr>
-                <p class="main-font">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                <div class=" jumbotron bg-light">
+                    <p class="text-full bg-light main-font">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                    <p class="text-full bg-light main-font">Your order number is <strong>{{ order.order_number }}</strong>.</p>                   
+                </div>
             </div>
         </div>
 
+        <!-- Order content infos -->
         <div class="row">
-            <div class="col-12 col-lg-7"></div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-lg-7 text-right">
-                <a href="{% url 'products' %}" class="btn btn-outline-white rounded my-2">
-                    <span class="icon mr-2">
-                        <i class="fas fa-gifts"></i>
-                    </span>
-                    <span class="text-uppercase">Now check out the latest team gear!</span>
-                </a>
+            <div class="col-12 col-lg-6">
+                <div class="order-confirmation-wrapper p-2 border text-full">                   
+                    <small class="text-black">Order Details:</small>
+                    <p class="mb-0 text-black"> Date: {{ order.date }}</p>
+                    {% for item in order.lineitems.all %}
+                        <p class="small mb-0 main-font"> Ordered:
+                            {{ item.product.name }}{% if item.product_size %} - Size {{ item.product_size|upper }}{% endif %}
+                        </p>
+                        <p class="small mb-0 main-font">Price per item: {{ item.quantity }} @ £{{ item.product.price }} each</p><br>
+                    {% endfor %}
+                    <small class="text-black">Bill Details:</small>
+                    <p class="mb-0 main-font">Total: {{ order.order_total }}</p>
+                    <p class="mb-0 main-font">Shipping: {{ order.delivery_cost }}</p>
+                    <hr>
+                    <p class="mb-0 text-black">Grand Total: {{ order.grand_total }}</p>
+                </div>
             </div>
+
+            <!-- Order shipping infos -->
+            <div class="col-12 col-lg-6">
+                <div class="order-confirmation-wrapper p-2 border text-full">                   
+                    <small class="text-black">Shipping adress:</small>
+                     <p class="mb-0 main-font">{{ order.full_name }}</p>
+                     <p class="mb-0 main-font">{{ order.street_address1 }}</p>
+                    {% if order.street_address2 %}                   
+                        <p class="mb-0 main-font">{{ order.street_address1 }}</p>
+                    {% endif %}
+                    {% if order.county %}
+                        <p class="mb-0 main-font">{{ order.county }}</p>
+                    {% endif %}
+                    {% if order.postcode %}
+                        <p class="mb-0 main-font">{{ order.postcode }}</p>
+                    {% endif %}
+                    <p class="mb-0 main-font">{{ order.town_or_city }}</p>
+                    <p class="mb-0 main-font">{{ order.country }}</p>
+                    <small class="text-black">Phone Number:</small>
+                    <p class="mb-0 main-font">{{ order.phone_number }}</p>
+                </div>
+            </div>               
+        </div>
+        
+        <!-- Buttons -->
+        <div class="row">
+			<div class="col-12 text-right mt-3">
+                <a href="{% url 'products' %}" class="btn btn-outline-white text-full rounded my-2">
+                    <span class="icon mr-2">
+                        <i class="fas fa-angle-left"></i>
+                    </span>
+                    <span class="text-uppercase">Back to shop</span>
+                </a>  
+			</div>
         </div>
     </div>
 {% endblock %}
