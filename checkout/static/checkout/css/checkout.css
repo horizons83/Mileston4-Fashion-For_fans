@@ -1,3 +1,7 @@
+.payment-icons {
+  height: 20px;
+}
+
 .StripeElement,
 .stripe-style-input {
   box-sizing: border-box;
