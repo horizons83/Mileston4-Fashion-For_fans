@@ -1,0 +1,9 @@
+Hello!
+
+{{ product.name }} is low in stock! Only {{ product.qty }} items of this product left.
+
+Please restock ASAP!
+
+Kind Regards,
+
+Fashion For Fans Admin System.

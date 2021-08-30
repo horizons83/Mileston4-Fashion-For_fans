@@ -1,0 +1,1 @@
+Warning! {{ product.name }} low stock count.

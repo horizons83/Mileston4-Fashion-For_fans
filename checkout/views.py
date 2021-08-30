@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.contrib.auth.models import User
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -12,6 +15,33 @@ from bag.contexts import bag_contents
 
 import stripe
 import json
+
+
+def _send_alert_email(product):
+    """
+    _send_alert_email:
+    Sends email alerts to admin when product low in stock.
+    Argument:
+    product: product low in stock after checkout.
+    Returns:
+    Nothing.
+    """
+
+    superusers = User.objects.filter(is_superuser=True).values_list('email')
+    subject = render_to_string(
+        'checkout/admin_email_alerts/admin_email_alert_subject.txt',
+        {'product': product})
+    body = render_to_string(
+        'checkout/admin_email_alerts/admin_email_alert_body.txt',
+        {'product': product, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+    for superuser in superusers:
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            superuser
+        )
 
 
 @require_POST
@@ -145,6 +175,22 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    items = json.loads(order.original_bag)
+
+    for item in items:
+        sku = str('000000' + item)
+        product = get_object_or_404(Product, sku=sku)
+        if isinstance(items[item], int):
+            product.qty -= items[item]
+        else:
+            quantity = 0
+            for size in items[item]['items_by_size']:
+                quantity += items[item]['items_by_size'][size]
+            product.qty -= quantity
+
+        if product.qty <= 3:
+            _send_alert_email(product)
+        product.save()
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -167,10 +213,9 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f'Payment successful! \
-        Thank you for your order. Your order number is \
-        {order_number}. A confirmation email will be sent \
-        to {order.email}.')
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
 
     if 'bag' in request.session:
         del request.session['bag']
