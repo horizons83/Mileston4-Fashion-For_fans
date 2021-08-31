@@ -75,7 +75,7 @@
                                     {% if product.qty > 3 %}
                                     <p class="text-success">In stock</p>
                                     {% elif product.qty > 0 %}
-                                        <p class="text-danger">Few left!</p>
+                                        <p class="text-danger">Hurry selling fast!</p>
                                     {% else %}
                                         <p class="text-danger">Out of Stock </p>
                                     {% endif %}
@@ -113,7 +113,9 @@
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
+                            {% if product.qty > 0 %}
                                 <input type="submit" class="btn btn-outline-white rounded-0 text-uppercase mt-5" value="Add to Bag">
+                            {% endif %}
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
