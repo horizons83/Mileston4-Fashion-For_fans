@@ -75,7 +75,17 @@ def add_product(request):
     """
     Render form for admin to add product to the store
     """
-    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your product was added successfully!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Whoops product not added. Please check the form is valid.')
+    else:
+        form = ProductForm()
+
     template = 'products/add_product.html'
     context = {
         'form': form
