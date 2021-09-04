@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=8wqph%5sq(7j(*0zp&1bu$%r^nzc61g)+uqb94hh9rjq*9dj6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['milestone4-fashion-for-fans.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -119,12 +119,17 @@ WSGI_APPLICATION = 'fashion_for_fans.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation

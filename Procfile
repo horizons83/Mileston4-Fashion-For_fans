@@ -1,0 +1,1 @@
+web: gunicorn fashion_for_fans.wsgi:application
