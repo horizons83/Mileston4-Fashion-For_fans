@@ -1,8 +1,8 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item d-block d-md-none">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}" id="home-link">
-                All Products
+            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="{% url 'home' %}" id="home-link">
+                <strong>Fashion</strong> For Fans
             </a>
         </li>
         <li class="nav-item dropdown">
@@ -51,3 +51,15 @@
         </li>
     </ul>
 </div>
+
+<script>
+    // Add slideDown animation to Bootstrap dropdown when expanding.
+  $('.dropdown').on('show.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+  });
+
+  // Add slideUp animation to Bootstrap dropdown when collapsing.
+  $('.dropdown').on('hide.bs.dropdown', function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+  });
+</script>
