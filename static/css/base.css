@@ -394,6 +394,19 @@ a.category-badge > span.badge:hover {
     .home-text {
         font-size: 2rem !important;
     }
+
+    .btn.rounded-0.btn-lg, .btn.btn-outline-white.btn-outline-black.rounded-0.btn-lg.btn-bag {
+        padding: .375rem .375rem;
+        font-size: .75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .input-group-prepend,
+    .input-group-append {
+        display: none;
+    }
+
 }
 
 @media (max-width: 576px) {

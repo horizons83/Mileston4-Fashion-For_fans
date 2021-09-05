@@ -48,12 +48,12 @@
                                         <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
                                         {% endif %}
                                     </td>
-                                    <td class="py-3">
+                                    <td class="py-3 w-25">
                                         <p class="my-0 main-font"><strong>{{ item.product.name }}</strong></p>
                                         <p class="my-0 main-font"><strong>Size: </strong>{% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0 main-font">£{{ item.product.price }}</p>
+                                        <p class="my-0 main-font"><small>£{{ item.product.price }}</small></p>
                                     </td>
                                     <td class="py-3">
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
@@ -87,10 +87,10 @@
                                             </div>
                                         </form>
                                         <a class="update-link text-info"><small>Update</small></a>
-                                        <a class="remove-item float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><i class="far fa-trash-alt text-danger"></i></a>
+                                        <a class="remove-item float-right text-danger" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0 px-2 main-font">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        <p class="my-0 px-2 main-font"><small>£{{ item.product.price | calc_subtotal:item.quantity }}</small></p>
                                     </td>
                                 </tr>
                             {% endfor %}
