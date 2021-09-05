@@ -390,6 +390,10 @@ a.category-badge > span.badge:hover {
     .team-banner {
         height: 120px;
     }
+
+    .logo-font {
+        font-size: 2rem !important;
+    }
 }
 
 @media (max-width: 576px) {
@@ -397,12 +401,17 @@ a.category-badge > span.badge:hover {
         padding-top: 180px;
     }
 
+
     body {
         height: calc(100vh - 180px);
     }
 
     .team-banner {
         height: 80px;
+    }
+
+    .shop-now-button {
+        min-width: 160px;
     }
 }
 
