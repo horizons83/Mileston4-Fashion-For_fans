@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}
-    Home
-{% endblock %}
-
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -17,9 +13,11 @@
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-white home__anim1 home-text">
-                    Get your team gear now!
-                </h1>
+                <h1 class="display-4 logo-font text-white"> 404 Error!</h1>
+                <h4 class="display-4 logo-font text-white">
+                    Whoops looks like you took a wide turn and went off <br>
+                    track! Hit the button below to get back to the store
+                </h4>
                 <div class="my-5">
                     <h4>
                         <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded text-uppercase py-3 home__anim1">Shop Now</a>
@@ -28,8 +26,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block postloadjs %}
-    <script src="{% static 'home/js/home_animations.js' %}"></script>
 {% endblock %}
