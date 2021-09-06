@@ -42,7 +42,7 @@ body {
 
 @media screen and (max-width: 768px) {
     body {
-        background: url('/media/mobile-background.png') no-repeat center center fixed;
+        background: url('/media/mobile-background.png') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
