@@ -475,6 +475,29 @@ a.category-badge > span.badge:hover {
 	color: #17a2b8; /* text-info */
 }
 
+/* ----- Blog page ------- */
+
+.wrap_img {
+	height:50vh;
+	min-height: 30vh;
+	object-fit: cover;
+	width: 100%;
+}
+
+/* ----- Blog detail page ------- */
+
+figure .wrap_img {
+	display: block;
+	max-height: 100vh;
+	max-width: 80vh;
+}
+
+.blog_img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
 /*------------ Footer ----------*/
 
 .footer {

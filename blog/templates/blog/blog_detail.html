@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<main class="featured-container mb-0 pt-5">
+    <div class="row text-center">
+
+        <!-- Blogpost infos and superuser functionnality-->
+        <div class="col-lg-8 col-md-8 mx-auto">
+            <h2 class="logo-font mb-4 mt-5 text-full main-font">{{ blogpost.blog_title }}</h2>
+            <h5 class="text-muted blog-author"> by: {{ blogpost.author}}</h5>
+            <h5 class="text-muted blog-date"> {{ blogpost.date }}</h5>
+
+            <figure class="wrap_image">
+                {% if blogpost.image %} 
+                    <img src="{{ blogpost.image.url }}" alt="{{ blogpost.blog_title }}" class="blog_img blog-img" />             
+                {% else %}
+                    <img src="{{ blogpost.image_url }}" alt="{{ blogpost.blog_title }}" class="blog_img blog-img" />
+                {% endif %}
+            </figure>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-8 col-md-8 mx-auto pb-3 blog-content main-font text-justify">           
+            <p>{{ blogpost.blog_content | linebreaks }}</p>
+        </div>
+    </div>
+    <div class="text-center mt-2 pb-4">
+        <a href="{% url 'blog' %}" class="btn btn-md btn-outline-white rounded-0 text-full mx-2"><i class="fas fa-chevron-left"></i> GO BACK</a>
+    </div>
+</main>
+{% endblock %}
