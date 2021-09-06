@@ -10,10 +10,10 @@
 
 {% block content %}
 <main class="featured-container mb-0 pt-5">
-    <div class="row text-center">
+    <div class="row text-center mr-0">
 
         <!-- Blogpost infos and superuser functionnality-->
-        <div class="col-lg-8 col-md-8 mx-auto">
+        <div class="col-sm-12 col-md-8 mx-auto">
             <h2 class="logo-font mb-4 mt-5 text-full main-font">{{ blogpost.blog_title }}</h2>
             <h5 class="text-muted blog-author"> by: {{ blogpost.author}}</h5>
             <h5 class="text-muted blog-date"> {{ blogpost.date }}</h5>
@@ -30,7 +30,7 @@
 
     <!-- Blog Content -->
     <div class="container">
-        <div class="col-lg-8 col-md-8 mx-auto pb-3 blog-content main-font text-justify">           
+        <div class="col-sm-12 mx-auto pb-3 blog-content main-font text-justify">           
             <p>{{ blogpost.blog_content | linebreaks }}</p>
         </div>
     </div>
