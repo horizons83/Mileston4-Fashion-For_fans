@@ -28,11 +28,92 @@
         </div>
     </div>
 
+    <!-- Blog Content -->
     <div class="container">
         <div class="col-lg-8 col-md-8 mx-auto pb-3 blog-content main-font text-justify">           
             <p>{{ blogpost.blog_content | linebreaks }}</p>
         </div>
     </div>
+
+    <!-- Back to blogs button -->
+
+    <div class="text-center mt-2 pb-4">
+        <a href="{% url 'blog' %}" class="btn btn-md btn-outline-white rounded-0 text-full mx-2"><i class="fas fa-chevron-left"></i> GO BACK</a>
+    </div>
+
+    <!-- Blog comments section -->
+    <hr>
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix">
+                <h3 class="mb-0 mb-4 comment-header main-font">Comments</h3>
+                <div class="row align-items-start">
+                    <div class="col-lg-6 col-sm-12 comment-total main-font">
+                        {% if blogpost.comments.count > 0 %}
+                            <h4 class="text-full"><strong>{{ blogpost.comments.count }}</strong></h4>
+                        {% else %}
+                            <h4 class="text-full">0</h4>
+                        {% endif %}
+                        <h6>total comments</h6>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 comment-btn-up">
+                        <a href="#" type="button" class="btn btn btn-outline-white rounded-0">Write a comment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded shadow-sm p-4 main-font">
+                <div class="pt-4 pb-4">
+                    {% if blogpost.comments.count > 0 %}
+                        {% for comment in blogpost.comments.all %}
+                            <div class="row align-items-start comment-detail mt-3">
+                                <div class="col-4">
+                                    <h6 class="mb-1">{{ comment.comment_user }}</h6>
+                                    <p class="text-full">{{ comment.date }}</p>
+                                </div>
+                                <div class="col-8 pl-3">
+                                    <h4 class="mb-3 text-full">
+                                        {{ comment.comment_title }}
+                                    </h4>
+                                    <div class="text-full">
+                                        <p>{{ comment.comment }}</p>
+                                    </div>
+                                    {% if request.user.is_authenticated or request.user.is_superuser %}
+                                        <div>
+                                            <button type="button" class="btn btn-outline-black text-full" data-toggle="modal" data-target="#deleteComment-{{ comment.id }}"><i class="fas fa-trash-alt"></i></button>
+                                            <a href="#" class="btn btn-outline-white"><i class="fas fa-edit"></i></a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        
+                            <div class="modal fade" id="deleteComment-{{ comment.id }}" tabindex="-1" aria-labelledby="deleteCLabel-{{ comment.id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title text-full font-weight-bold" id="deleteCLabel">Do you want to delete your comment?</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body text-full">
+                                            <p>Are you sure that your want to delete your comment? This action cannot be undone.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                            <a href="#" class="btn btn-danger ml-3">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No comments yet.</p>
+                    {% endif %}
+                </div>
+
+                            
+    <!-- Back to blogs button -->
+
     <div class="text-center mt-2 pb-4">
         <a href="{% url 'blog' %}" class="btn btn-md btn-outline-white rounded-0 text-full mx-2"><i class="fas fa-chevron-left"></i> GO BACK</a>
     </div>
