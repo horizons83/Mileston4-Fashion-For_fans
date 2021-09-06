@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block content %}
+    
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-7 col-md-6 my-auto">
@@ -28,6 +29,58 @@
             </div>
         </div>
     </div>
+      
+    <!-- Featured product section -->
+    <div class="featured-container">
+        <section id="featured" class="col-10 container">
+            <div class="row text-center">
+        
+                <!-- Header-->
+                <div class=" col text-full text-center pt-5 pb-4 main-font">
+                    <h2>OUR LATEST PRODUCTS</h2>
+                </div>
+            </div>
+            <hr>
+            <div class="row featured-card pb-3">
+                {% for suggested_product in suggested_products %}
+                    <div class="col-md-6 col-lg-4 col-xl-3 card__wrapper">
+                        <div class="box">
+        
+                            <!-- Card Image -->
+                            <div class="top__box">
+                                {% if suggested_product.image %}
+                                    <a href="{% url 'product_detail' suggested_product.id %}">
+                                        <img src="{{ suggested_product.image.url }}" alt="{{ suggested_product.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'product_detail' suggested_product.id %}">
+                                        <img src="{{ MEDIA_URL }}cw_red.png" alt="{{ suggested_product.name }}">
+                                    </a>
+                                {% endif %}
+                            </div>
+        
+                            <!-- Card infos -->
+                            <div class="bottom pb-4">
+                                <div class="bottom__box">
+                                    <div class="card__details main-font">
+                                        <p class=" mb-0 text-left">{{ suggested_product.name }}</p>
+                                        <p class="mb-0 text-left font-weight-bold">${{ suggested_product.price }}</p>
+                                        {% if suggested_product.category %}
+                                            <p class="small mt-1 mb-0">
+                                                <a class="text-muted" href="#">
+                                                    <i class="fas fa-tag mr-1"></i>{{ suggested_product.category.friendly_name }}
+                                                </a>
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div> 
+        </section>
+    </div> 
 {% endblock %}
 
 {% block postloadjs %}
