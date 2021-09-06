@@ -38,10 +38,7 @@ body {
 }
 
 /*------ Base------*/
-*, ::before, ::after {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-}
+
 
 p {
     font-size: var(--normal-font-size); 
