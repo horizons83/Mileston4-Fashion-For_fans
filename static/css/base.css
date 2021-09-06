@@ -51,7 +51,6 @@ body {
 }
 
 
-
 /*------ Base------*/
 
 
@@ -501,6 +500,7 @@ figure .wrap_img {
 /*------------ Footer ----------*/
 
 .footer {
+    display: block;
     right: 0;
     bottom: 0;
     left: 0;
@@ -597,7 +597,7 @@ figure .wrap_img {
     }
 
     #delivery-banner h4 {
-        font-size: .9rem;
+        font-size: 1rem;
     }
 
     .team-banner {

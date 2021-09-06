@@ -68,3 +68,52 @@ def add_blogpost(request):
         }
 
     return render(request, template, context)
+
+
+@login_required
+def blog_comment(request, blogpost_id):
+    """
+    Create Add comment post form for regitered user only.
+    """
+
+    blogpost = get_object_or_404(BlogPost, pk=blogpost_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.comment_user = request.user
+            comment.blogpost = blogpost
+            comment.save()
+            messages.success(request, 'Thank you for your comment !')
+            return redirect(reverse('blog_detail', args=[blogpost.id]))
+        else:
+            messages.error(request,
+                           'Oops something went wrong. \
+                            Please try again.')
+    else:
+        form = CommentForm(instance=blogpost)
+    template = 'blog/add_comment.html'
+    context = {
+        'form': form,
+        'blogpost': blogpost,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def delete_comment(request, comment_id):
+    """
+    Deletes at an existing comment.
+    """
+
+    comment = get_object_or_404(BlogComment, pk=comment_id)
+
+    if request.user == comment.comment_user or request.user.is_superuser:
+        comment.delete()
+        messages.success(request, 'Your comment is deleted !')
+        return redirect(reverse('blog'))
+    else:
+        messages.error(request, 'Sorry you cannot delete this comment !')
+        return redirect(reverse('blog'))

@@ -46,7 +46,7 @@
     <div class="container">
         <div class="col-sm-12">
             <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix">
-                <h3 class="mb-0 mb-4 comment-header main-font">Comments</h3>
+                <h3 class="mb-0 mb-4 main-font">Comments</h3>
                 <div class="row align-items-start">
                     <div class="col-lg-6 col-sm-12 comment-total main-font">
                         {% if blogpost.comments.count > 0 %}
@@ -56,8 +56,8 @@
                         {% endif %}
                         <h6>total comments</h6>
                     </div>
-                    <div class="col-lg-6 col-sm-12 comment-btn-up">
-                        <a href="#" type="button" class="btn btn btn-outline-white rounded-0">Write a comment</a>
+                    <div class="col-lg-6 col-sm-12">
+                        <a href="{% url 'blog_comment' blogpost.id %}" type="button" class="btn btn btn-outline-white rounded-0">Write a comment</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                                     <p class="text-full">{{ comment.date }}</p>
                                 </div>
                                 <div class="col-8 pl-3">
-                                    <h4 class="mb-3 text-full">
+                                    <h4 class="mb-3">
                                         {{ comment.comment_title }}
                                     </h4>
                                     <div class="text-full">
@@ -79,13 +79,13 @@
                                     </div>
                                     {% if request.user.is_authenticated or request.user.is_superuser %}
                                         <div>
-                                            <button type="button" class="btn btn-outline-black text-full" data-toggle="modal" data-target="#deleteComment-{{ comment.id }}"><i class="fas fa-trash-alt"></i></button>
+                                            <button type="button" class="btn btn-outline-black" data-toggle="modal" data-target="#deleteComment-{{ comment.id }}"><i class="fas fa-trash-alt"></i></button>
                                             <a href="#" class="btn btn-outline-white"><i class="fas fa-edit"></i></a>
                                         </div>
                                     {% endif %}
                                 </div>
                             </div>
-                        
+                        <!-- Delete comment modal -->
                             <div class="modal fade" id="deleteComment-{{ comment.id }}" tabindex="-1" aria-labelledby="deleteCLabel-{{ comment.id }}" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -100,7 +100,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                            <a href="#" class="btn btn-danger ml-3">Delete</a>
+                                            <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger ml-3">Delete</a>
                                         </div>
                                     </div>
                                 </div>
