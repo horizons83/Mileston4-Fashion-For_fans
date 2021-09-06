@@ -30,7 +30,7 @@ html {
 }
 
 body {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/media/home-image-alt.png') no-repeat center center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/media/home-image-alt.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -40,15 +40,15 @@ body {
     font-family: var(--body-font);
 }
 
-/*@media screen and (max-width: 768px) {
+@media (max-width: 1024px) {
     body {
-        background: url('/media/mobile-background.png') no-repeat center center;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/media/home-image-alt.png') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
     }
-}*/
+}
 
 
 
