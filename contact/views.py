@@ -22,7 +22,7 @@ def contact(request):
             subject = (" Message Receipt Confirmation: " +
                        contact_form.cleaned_data['subject'])
             body = render_to_string(
-                'contact/emails/email_body.txt',
+                'contact/email/email_body.txt',
                 {'contact_email': settings.DEFAULT_FROM_EMAIL})
             send_mail(
                 subject,
@@ -42,7 +42,7 @@ def contact(request):
             phone_number = contact_form.cleaned_data['phone_number']
             your_message = contact_form.cleaned_data['your_message']
             admin_body = render_to_string(
-                'contact/emails/admin_body.txt',
+                'contact/email/admin_email_body.txt',
                 {
                     'sender_email': user_email,
                     'first_name': user_name,
@@ -59,7 +59,7 @@ def contact(request):
             )
             contact_form.save()
             messages.success(request, 'Your message was sent successfully !')
-            return redirect(reverse('contact'))
+            return redirect('products')
         else:
             messages.error(request, 'Oops, looks like there is an error. Please check and try again')
 

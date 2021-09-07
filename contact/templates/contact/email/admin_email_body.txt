@@ -1,0 +1,16 @@
+Hello,
+
+{{ first_name }} {{ last_name }} has sent you a message on Fashion For Fans. 
+
+Please respond to this email,
+
+Sender: {{ sender_email }}
+
+Senders phone number: {{ phone_number }}
+
+Their message:
+{{ your_message }}
+
+Kind Regards,
+
+Fashion For Fans Admin.
