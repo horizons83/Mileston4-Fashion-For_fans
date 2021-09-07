@@ -19,12 +19,7 @@ import json
 
 def _send_alert_email(product):
     """
-    _send_alert_email:
     Sends email alerts to admin when product low in stock.
-    Argument:
-    product: product low in stock after checkout.
-    Returns:
-    Nothing.
     """
 
     superusers = User.objects.filter(is_superuser=True).values_list('email')

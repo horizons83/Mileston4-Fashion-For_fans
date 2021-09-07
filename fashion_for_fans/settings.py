@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'blog',
+    'contact',
 
     # Other
     'crispy_forms',
@@ -118,6 +119,7 @@ WSGI_APPLICATION = 'fashion_for_fans.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
