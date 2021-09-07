@@ -9,16 +9,16 @@
 {% endblock %}
 
 {% block content %}
-<main class="featured-container mb-0 pt-5">
+<main class="mb-0 pt-5">
     <div class="row text-center mr-0">
 
         <!-- Blogpost and blogpost admin -->
         <div class="col-sm-12 col-md-8 mx-auto">
-            <h2 class="logo-font mb-4 mt-5 text-full main-font">{{ blogpost.blog_title }}</h2>
-            <h5 class="text-muted blog-author"> by: {{ blogpost.author}}</h5>
-            <h5 class="text-muted blog-date"> {{ blogpost.date }}</h5>
+            <h2 class="logo-font mb-4 mt-5 main-font">{{ blogpost.blog_title }}</h2>
+            <h5 class="text-mutedr"> by: {{ blogpost.author}}</h5>
+            <h5 class="text-muted"> {{ blogpost.date }}</h5>
             {% if request.user.is_superuser %}
-                <small class="blog-crud main-font">
+                <small class="main-font">
                     <a href="{% url 'edit_blogpost' blogpost.id %}">Edit</a> | 
                     <a class="text-danger" data-toggle="modal" data-target="#deleteBlogpost-{{ blogpost.id }}">Delete</a>
                 </small>
@@ -56,7 +56,7 @@
 
     <!-- Blog Content -->
     <div class="container">
-        <div class="col-sm-12 mx-auto pb-3 blog-content main-font text-justify">           
+        <div class="col-sm-12 mx-auto pb-3 main-font text-justify">           
             <p>{{ blogpost.blog_content | linebreaks }}</p>
         </div>
     </div>
@@ -74,7 +74,7 @@
             <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix">
                 <h3 class="mb-0 mb-4 main-font">Comments</h3>
                 <div class="row align-items-start">
-                    <div class="col-lg-6 col-sm-12 comment-total main-font">
+                    <div class="col-lg-6 col-sm-12 main-font">
                         {% if blogpost.comments.count > 0 %}
                             <h4 class="text-full"><strong>{{ blogpost.comments.count }}</strong></h4>
                         {% else %}
@@ -91,7 +91,7 @@
                 <div class="pt-4 pb-4">
                     {% if blogpost.comments.count > 0 %}
                         {% for comment in blogpost.comments.all %}
-                            <div class="row align-items-start comment-detail mt-3">
+                            <div class="row align-items-start mt-3">
                                 <div class="col-4">
                                     <h6 class="mb-1">{{ comment.comment_user }}</h6>
                                     <p class="text-full">{{ comment.date }}</p>
@@ -106,7 +106,7 @@
                                     {% if request.user.is_authenticated or request.user.is_superuser %}
                                         <div>
                                             <button type="button" class="btn btn-outline-black" data-toggle="modal" data-target="#deleteComment-{{ comment.id }}"><i class="fas fa-trash-alt"></i></button>
-                                            <a href="#" class="btn btn-outline-white"><i class="fas fa-edit"></i></a>
+                                            <a href="{% url 'edit_comment' comment.id %}" class="btn btn-outline-white"><i class="fas fa-edit"></i></a>
                                         </div>
                                     {% endif %}
                                 </div>

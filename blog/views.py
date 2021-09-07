@@ -117,7 +117,7 @@ def delete_blogpost(request, blogpost_id):
         blogpost.delete()
         return redirect(reverse('blog'))
     else:
-        messages.error(request, 'You do not have permission to do that !')
+        messages.error(request, 'You do not have permission to do that!')
         return redirect(reverse('blog'))
 
 
@@ -154,6 +154,40 @@ def blog_comment(request, blogpost_id):
 
 
 @login_required
+def edit_comment(request, comment_id):
+    """
+    Edits an existing blog comment.
+    """
+
+    comment = get_object_or_404(BlogComment, pk=comment_id)
+    if request.user == comment.comment_user or request.user.is_superuser:
+        if request.method == 'POST':
+            form = CommentForm(request.POST, instance=comment)
+            if form.is_valid():
+                form.save()
+                messages.success(
+                            request,
+                            'Your comment was successfully edited')
+                return redirect(reverse('blog'))
+            else:
+                messages.error(request,
+                               'Failed to edit your comment. \
+                                Please ensure the form is valid.')
+        else:
+            form = CommentForm(instance=comment)
+        template = 'blog/edit_comment.html'
+        context = {
+            'form': form,
+            'comment': comment,
+        }
+
+        return render(request, template, context)
+    else:
+        messages.error(request, 'You do not have permission to do that!!')
+        return redirect(reverse('blog'))
+
+
+@login_required
 def delete_comment(request, comment_id):
     """
     Deletes at an existing comment.
@@ -163,8 +197,8 @@ def delete_comment(request, comment_id):
 
     if request.user == comment.comment_user or request.user.is_superuser:
         comment.delete()
-        messages.success(request, 'Your comment is deleted !')
+        messages.success(request, 'Your comment has been deleted !')
         return redirect(reverse('blog'))
     else:
-        messages.error(request, 'Sorry you cannot delete this comment !')
+        messages.error(request, 'Sorry you cannot delete this comment!')
         return redirect(reverse('blog'))
