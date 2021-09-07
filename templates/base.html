@@ -74,11 +74,11 @@
                                 <p class="my-0">My Account</p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        <div class="dropdown-menu" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                                    <a href="{% url 'add_blogpost' %}" class="dropdown-item">Blog Management</a>
+                                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                                <a href="{% url 'add_blogpost' %}" class="dropdown-item">Blog Management</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -181,7 +181,9 @@
                         <div class="col-12">
                             <p class="copyright text-center">Copyright &copy; 2021 Fashion For Fans, Inc.
                                 and/or its affiliated entities. All Rights Reserved. No portion of this site
-                                may be reproduced or duplicated without the express permission of Fashion For Fans</p>
+                                may be reproduced or duplicated without the express permission of Fashion For Fans
+                            </p>
+                            <p class="text-center">( Site for educational purposes only )</p> 
                         </div>
                     </div>
                 </div>
