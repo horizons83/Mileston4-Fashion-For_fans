@@ -23,7 +23,7 @@
 
         <!-- Form -->
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6 mx-auto">
+            <div class="col-12 col-md-6 shadow-lg mb-4">
                 <form method="POST" action="{% url 'add_blogpost' %}" class="form mb-2 main-font" enctype="multipart/form-data">
                     {% csrf_token %}
                      {% for field in form %}

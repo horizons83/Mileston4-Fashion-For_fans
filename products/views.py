@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Team, Category, Review
-from .forms import ProductForm
+from .forms import ProductForm, ReviewForm
+from bag.views import remove_from_bag
 # Create your views here.
 
 
@@ -44,7 +45,8 @@ def all_products(request):
                 messages.error(request, "Whoops! You didn't enter any criteria!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = {Q(name__icontains=query) |
+                       Q(description__icontains=query)}
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -118,7 +120,9 @@ def add_product(request):
             messages.success(request, 'Your product was added successfully!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Whoops product not added. Please check the form is valid.')
+            messages.error(
+                request,
+                'Whoops product not added. Please check the form is valid.')
     else:
         form = ProductForm()
 
@@ -145,10 +149,13 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, f'{product.name} was updated successfully!')
+            messages.success(
+                request, f'{product.name} was updated successfully!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -173,6 +180,42 @@ def delete_product(request, product_id):
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
+
+    # Check if product in bag.
+    bag = request.session.get('bag', {})
+    if str(product_id) in list(bag.keys()):
+        remove_from_bag(request, str(product_id))
     product.delete()
-    messages.success(request, 'Product was successfully deleted!')
+    messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def review_product(request, product_id):
+    """
+    Allow registered user to add a product review
+    """
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.reviewer = request.user
+            review.product = product
+            review.save()
+            messages.success(request, 'Thank you for your review !')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request,
+                           'Oops something went wrong. \
+                            Please try again.')
+    else:
+        form = ReviewForm(instance=product)
+    template = 'products/add_review.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
