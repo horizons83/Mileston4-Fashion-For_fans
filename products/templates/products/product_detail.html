@@ -23,6 +23,8 @@
     <div class="overlay"></div>
     <div class="container-fluid">
         <div class="row">
+
+            <!-- Product Image -->
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-5" id="prod-img"> 
                     {% if product.image %}
@@ -36,6 +38,7 @@
                     {% endif %}
                 </div>
             </div>
+            <!-- Product Information and admin controls -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0 product-name-title">{{ product.name }}</p>
@@ -107,6 +110,7 @@
                                 </div>
                             </div>
 
+                            <!-- Buttons -->
                             <div class="col{% if s %}-12 mt-2{% endif %}">
                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                                     <span class="icon">
@@ -122,10 +126,146 @@
                             {% endwith %}
                         </div>
                     </form>
-                </div>
+                </div>   
             </div>
+            <!-- Review section -->
+            <div class="container">
+                <hr>
+                    <div class="col-md-12">
+                        <div class="bg-white rounded shadow-sm p-4 mb-4 clearfix main-font">
+                            <h5 class="mb-0 mb-4">Ratings and Reviews</h5>
+                            <div class="row align-items-start">
+                                <div class="col-lg-4 col-sm-4">
+                                    <h4 class="text-full"><strong>{{ product.reviews.count }}</strong></h4>
+                                    <h6 class="my-3">total reviews</h6>
+                                </div>
+                                <div class="col-lg-4 col-sm-4 col-xs-6">
+                                    {% if product.reviews.count > 0 %}
+                                    <h5 class="text-full"><strong>{{ average_rating }} /5 <i
+                                                class="far fa-star"></i></strong></h5>
+                                    <h6 class="my-3">Rating</h6>
+                                    {% else %}
+                                    <h5 class="text-full"><strong>{{ average_rating }}</strong></h5>
+                                    <h6 class="my-3">Rating</h6>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-4 col-sm-4">
+                                    <a href="#" type="button"
+                                        class="btn btn-outline-white rounded-0 btn-md btn-bag">WRITE A REVIEW</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded shadow-sm p-4 mb-4">
+                            <h5 class="mb-1 main-font">Customer's reviews</h5>
+                            <div class=" pt-4 pb-4 main-font">
+                                {% if product.reviews.count > 0 %}
+                                {% for review in product.reviews.all %}
+                                <div class="row align-items-start mt-3">
+                                    <div class="col-4 main-font">
+                                        <h6 class="mb-1">{{ review.reviewer }}</h6>
+                                        <p class="text-gray">{{ review.date }}</p>
+                                    </div>
+                                    <div class="col-8 pl-3">
+                                        <h4 class="mb-3">
+                                            {{ review.rating }} <i class="far fa-star"></i>
+                                        </h4>
+                                        <div class="main-font">
+                                            <p>{{ review.review }}</p>
+                                        </div>
+                                        {% if request.user.is_authenticated  or request.user.is_superuser %}
+                                        <div>
+                                            <button type="button" class="btn btn-full" data-toggle="modal"
+                                                data-target="#deleteReview-{{ review.id }}"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                            <a href="#" class="btn btn-clear"><i
+                                                    class="fas fa-edit"></i></a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!-- Delete review modal -->
+                                <div class="modal fade" id="deleteReview-{{ review.id }}" tabindex="-1"
+                                    aria-labelledby="deleteLabel-{{ review.id }}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title font-weight-bold" id="deleteLabel">Do
+                                                    you want to delete your review?</h3>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure that you want to delete your review? This action cannot
+                                                    be undone.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-dismiss="modal">Cancel</button>
+                                                <a href="#"
+                                                    class="btn btn-danger ml-3">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <p>No product reviews.</p>
+                                {% endif %}
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suggestions -->
+                    <article class="featured-card mb-4">
+                        <div class="row no-gutters">
+                            <div class="col-sm-12 text-center main-font">
+                                <h3>Your Suggestions</h3>
+                                <hr>
+                            </div>
+                            {% for suggested_product in suggested_products %}
+                            <div class="col-sm-6 col-lg-4 col-xl-3 card__wrapper main-font">
+                                <div class="box">
+                                    <div class="top__box">
+                                        {% if suggested_product.image %}
+                                        <a href="{% url 'product_detail' suggested_product.id %}">
+                                            <img src="{{ suggested_product.image.url }}"
+                                                alt="{{ suggested_product.name }}">
+                                        </a>
+                                        {% else %}
+                                        <a href="{% url 'product_detail' suggested_product.id %}">
+                                            <img src="{{ MEDIA_URL }}cw_red.png" alt="{{ suggested_product.name }}">
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="bottom pb-4">
+                                        <div class="bottom__box">
+                                            <div class="card__details">
+                                                <p class=" mb-0 text-left">{{ suggested_product.name }}</p>
+                                                <p class="mb-0 text-left font-weight-bold">
+                                                    ${{ suggested_product.price }}</p>
+                                                {% if suggested_product.category %}
+                                                <p class="small mt-1 mb-0">
+                                                    <a class="text-muted" href="#">
+                                                        <i
+                                                            class="fas fa-tag mr-1"></i>{{ suggested_product.category.friendly_name }}
+                                                    </a>
+                                                </p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </article>
+            </div>    
         </div>
-    </div>
+    </div>       
     
 {% endblock %}
 

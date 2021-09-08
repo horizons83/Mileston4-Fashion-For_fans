@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Team, Category
+from .models import Product, Team, Category, Review
 
 # Register your models here.
 
@@ -18,6 +18,11 @@ class TeamAdmin(admin.ModelAdmin):
     )
 
 
+class ReviewInline(admin.TabularInline):
+    """ Allows view/edit of reviews from Product detail page """
+    model = Review
+
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'sku',
@@ -32,7 +37,23 @@ class ProductAdmin(admin.ModelAdmin):
 
     ordering = ('sku',)
 
+    inlines = [
+        ReviewInline,
+    ]
+
+
+class ReviewAdmin(admin.ModelAdmin):
+    """ Add product review section in admin dashboard """
+
+    list_display = (
+        'review_title',
+        'reviewer',
+        'product',
+        'rating'
+    )
+
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Review, ReviewAdmin)
