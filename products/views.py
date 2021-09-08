@@ -251,3 +251,20 @@ def edit_review(request, review_id,):
     else:
         messages.error(request, 'You cannot do that !')
         return redirect(reverse('products'))
+
+
+@login_required
+def delete_review(request, review_id):
+    """
+    Deletes at an existing review..
+    """
+
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.user == review.reviewer or request.user.is_superuser:
+        review.delete()
+        messages.success(request, 'Your review has been deleted !')
+        return redirect(reverse('products'))
+    else:
+        messages.error(request, 'You cannot do that !')
+        return redirect(reverse('products'))
