@@ -1,5 +1,6 @@
 from django.db import models
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -43,9 +44,35 @@ class Product(models.Model):
     size = MultiSelectField(choices=Sizes, null=True, blank=True)
     qty = models.IntegerField(default='5')
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+
+INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 6)]
+
+
+class Review(models.Model):
+    """Saves a review model in database"""
+
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='reviews')
+    rating = models.IntegerField(
+        choices=INTEGER_CHOICES, default='5')
+    reviewer = models.ForeignKey(
+        User, on_delete=models.CASCADE)
+    date = models.DateTimeField(
+        auto_now_add=True)
+    review_title = models.CharField(
+        max_length=50, null=False,
+        blank=False)
+    review = models.TextField(
+        max_length=1024, null=False,
+        blank=False)
+
+    def __str__(self):
+        return self.review_title

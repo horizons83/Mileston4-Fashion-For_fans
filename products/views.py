@@ -1,9 +1,10 @@
+import random
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Team, Category
+from .models import Product, Team, Category, Review
 from .forms import ProductForm
 # Create your views here.
 
@@ -59,14 +60,43 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product details """
+    """ A view to show individual product details
+        and suggested products
+     """
 
     product = get_object_or_404(Product, pk=product_id)
     team = Team.objects.all()
+    reviews = Review.objects.filter(product=product)
+    category = product.category
+    suggestions = Product.objects.filter(category=category)
+    suggested_products = list(suggestions)
+
+    # removes current product from suggested products
+    for i, item in enumerate(suggested_products):
+        if item == product:
+            suggested_products.pop(i)
+            break
+
+    # pick 3 random products from suggested list
+    suggested_products = random.sample(
+        suggested_products, min(len(suggested_products), 3))
+
+    # rating math logic.
+    if len(reviews) > 0:
+        average_rating = 0
+        for review in reviews:
+            average_rating += review.rating
+
+        average_rating = round(float(average_rating) / float(len(reviews)), 1)
+    else:
+        average_rating = 'N/A'
 
     context = {
         'product': product,
         'team': team,
+        'reviews': reviews,
+        'average_rating': average_rating,
+        'suggested_products': suggested_products,
     }
 
     return render(request, 'products/product_detail.html', context)

@@ -27,7 +27,6 @@ class ProductAdmin(admin.ModelAdmin):
         'size',
         'qty',
         'price',
-        'rating',
         'image',
     )
 

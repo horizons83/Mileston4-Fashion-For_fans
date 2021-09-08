@@ -32,7 +32,7 @@ def contact(request):
             )
 
             if settings.EMAIL_HOST_USER:
-                admin_email = settings.DEFAULT_FROM_EMAIL
+                admin_email = settings.EMAIL_HOST_USER
             else:
                 admin_email = settings.DEFAULT_FROM_EMAIL
 
