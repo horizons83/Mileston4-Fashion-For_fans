@@ -1,4 +1,5 @@
 import random
+from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from products.models import Product
 
@@ -9,10 +10,6 @@ from products.models import Product
 def index(request):
     """
     Displays index page and random suggested products.
-    Parameters:
-    request.
-    Returns:
-    Render: request, index template and context
    """
     suggestions = Product.objects.all()
     suggested_products = list(suggestions)
@@ -26,3 +23,15 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def safe_shopping(request):
+    return render(request, 'home/safe_shopping.html')
+
+
+def delivery(request):
+    return render(request, 'home/delivery.html')
+
+
+def returns(request):
+    return render(request, 'home/returns.html')
