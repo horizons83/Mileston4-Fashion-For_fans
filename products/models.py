@@ -35,8 +35,10 @@ class Product(models.Model):
     Sizes = (('XS', 'X-Small'), ('S', 'Small'), ('M', 'Medium'),
              ('L', 'Large'), ('XL', 'X-Large'))
     INTEGER_QTY = [tuple([x, x]) for x in range(1, 2500)]
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
-    team = models.ForeignKey('Team', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category', null=True, blank=True, on_delete=models.SET_NULL)
+    team = models.ForeignKey(
+        'Team', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()

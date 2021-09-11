@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -61,7 +61,9 @@ def contact(request):
             messages.success(request, 'Your message was sent successfully !')
             return redirect('products')
         else:
-            messages.error(request, 'Oops, looks like there is an error. Please check and try again')
+            messages.error(request,
+                           'Oops, looks like there is an error.'
+                           'Please check and try again')
 
     else:
         contact_form = ContactForm()

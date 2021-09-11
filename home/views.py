@@ -1,5 +1,4 @@
 import random
-from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from products.models import Product
 
