@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
-
+from products.models import Review
 from checkout.models import Order
 
 
@@ -21,15 +21,18 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated seccessfully')
         else:
-            messages.error(request, 'Upadte failed. Please ensure the for is valid')
+            messages.error(request,
+                           'Upadte failed. Please ensure the for is valid')
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
+    reviews = Review.objects.filter(reviewer=request.user)
 
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
+        'reviews': reviews,
         'on_profile_page': True,
     }
 

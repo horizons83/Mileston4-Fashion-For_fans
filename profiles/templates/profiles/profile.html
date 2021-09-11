@@ -75,6 +75,43 @@
                 </div>
             </div>
         </div>
+        <div class="row justify-content-end">
+            <div class="col-sm-12 col-lg-6">
+                <p class="text-muted">Review History</p>
+                <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr class="bg-light">
+                                <th>Product</th>
+                                <th>Review</th>
+                                <th>Date</th>
+                                <th>Rating</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        {% for review in reviews %}
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{ review.product }}
+                                </td>
+                                <td>
+                                    {{ review.review|truncatechars:10 }}
+                                </td>
+                                <td>                                                                                           
+                                    <p class="small">{{ review.date }}</p>
+                                </td>
+                                <td>{{ review.rating }} <i class="fas fa-star"></i></td>
+                                <td class="d-flex align-items-start">
+                                    <a href="{% url 'edit_review' review.id %}" class=" btn btn-outline-white btn-sm mx-1" aria-label="edit"><i class="fas fa-edit fa-sm"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
