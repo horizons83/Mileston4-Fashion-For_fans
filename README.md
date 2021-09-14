@@ -1,6 +1,6 @@
 # Fashion For Fans #
 ---
-![Hero Screenshot](docs/images/hero-image.jpeg)
+![Hero Screenshot](docs/images/hero-image.jpg)
 
 ### User Stories ###
 
@@ -94,7 +94,7 @@ To create the wireframes for this project, I used the tool [**Balsamiq**](https:
 * [Heroku](https://heroku.com/)
 * [AWS](https://aws.amazon.com/)
 * [Balsamiq](https://balsamiq.com/)
-* [QuickDBD](https://www.quickdatabasediagrams.com/)
+* [dbdiagram](https://dbdiagram.io/home)
 * [Favicon.io](https://favicon.io/)
 * [W3C HTML Validator](https://validator.w3.org/)
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
