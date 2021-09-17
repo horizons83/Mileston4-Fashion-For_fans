@@ -19,6 +19,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='size',
-            field=multiselectfield.db.fields.MultiSelectField(blank=True, choices=[('XS', 'X-Small'), ('S', 'Small'), ('M', 'Medium'), ('L', 'Large'), ('XL', 'X-Large')], max_length=11, null=True),
+            field=multiselectfield.db.fields.MultiSelectField(
+                blank=True,
+                choices=[
+                    ('XS', 'X-Small'), ('S', 'Small'), ('M', 'Medium'),
+                    ('L', 'Large'), ('XL', 'X-Large')
+                    ], max_length=11, null=True),
         ),
     ]

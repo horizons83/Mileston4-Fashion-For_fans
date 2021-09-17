@@ -53,7 +53,7 @@ As an Admin:
 
 ### Wireframes ###
 
-To create the wireframes for this project, I used the tool [**Balsamiq**](https://balsamiq.com/).
+The wireframes for this project were created using [**Balsamiq**](https://balsamiq.com/).
 
 ### Defensive Design ###
 
@@ -124,7 +124,7 @@ To create the wireframes for this project, I used the tool [**Balsamiq**](https:
 
 **1. Clone from Github**
 
-* One can run this project locally on their IDE of choice by saving a copy of the Github repository at https://github.com/horizons83/Milestone4-Fashion-For-Fans.git by clicking the "Download Code" button or by running this command in their IDE command line:
+* You can run this project locally on your IDE of choice by saving a copy of the Github repository at https://github.com/horizons83/Milestone4-Fashion-For-Fans.git by clicking the "Download Code" button or by running this command in your IDE command line:
 ```
 $ git clone https://github.com/horizons83/Milestone4-Fashion-For-Fans.git
 ```
