@@ -57,7 +57,7 @@
     <!-- Blog Content -->
     <div class="container">
         <div class="col-sm-12 col-lg-10 mx-auto pb-3 main-font text-justify">           
-            <p>{{ blogpost.blog_content | linebreaks }}</p>
+            {{ blogpost.blog_content | linebreaks }}
         </div>
     </div>
 
@@ -83,7 +83,7 @@
                         <h6>total comments</h6>
                     </div>
                     <div class="col-lg-6 col-sm-12">
-                        <a href="{% url 'blog_comment' blogpost.id %}" type="button" class="btn btn btn-outline-white rounded-0">Write a comment</a>
+                        <a href="{% url 'blog_comment' blogpost.id %}" class="btn btn btn-outline-white rounded-0">Write a comment</a>
                     </div>
                 </div>
             </div>
@@ -136,7 +136,9 @@
                         <p>No comments yet.</p>
                     {% endif %}
                 </div>
-
+            </div>
+        </div>
+    </div>
                             
     <!-- Back to blog list button -->
 
