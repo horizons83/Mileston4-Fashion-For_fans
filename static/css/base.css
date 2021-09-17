@@ -281,7 +281,6 @@ input[name='q']::placeholder {
 
     background: -webkit-linear-gradient(90deg, hsla(37, 64%, 50%, 1) 0%, hsla(40, 75%, 60%, 1) 100%);
 
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D0922D", endColorstr="#E6B24C", GradientType=1 );
     height: 100%;
     width: 100%;
     top: 0;
