@@ -53,7 +53,8 @@ As an Admin:
 
 ### Wireframes ###
 
-The wireframes for this project were created using [**Balsamiq**](https://balsamiq.com/).
+The wireframes for this project were created using [**Balsamiq**](https://balsamiq.com/). \
+[**Click Here**](docs/milestone-4.pdf) for the project wireframes.
 
 ### Defensive Design ###
 
