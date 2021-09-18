@@ -1,6 +1,11 @@
-# Fashion For Fans #
+![Fashion For Fans Logo](docs/images/logo.png)
 ---
-![Hero Screenshot](docs/images/hero-image.jpg)
+Fashion For Fans is an e-commerce web application developed as part of 
+[*Code Institute, Diploma in Full Stack Software Development*](https://codeinstitute.net/full-stack-software-development-diploma/).
+
+* The live site can be accessed [*here*](https://milestone4-fashion-for-fans.herokuapp.com/).
+
+![Hero Screenshot](docs/images/multi-device.png)
 
 ### User Stories ###
 
@@ -477,6 +482,9 @@ The app can now be open at https://< your-app-name >.herokuapp.com/
 
 ## Credits ##
 ---
+**Code Tutorials**
+* This project was referenced to the BOUTIQUE ADO project from CI
+
 **Hero Image**
 * The hero image was taken from [Wallpaperforu](https://wallpaperforu.com/wallpaper-formula-1-mercedes-benz-mercedes-f1-lewis/)
 
