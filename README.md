@@ -53,8 +53,15 @@ As an Admin:
 
 ### Wireframes ###
 
-The wireframes for this project were created using [**Balsamiq**](https://balsamiq.com/). \
+The wireframes for this project were created using [**Balsamiq**](https://balsamiq.com/).
 [**Click Here**](docs/milestone-4.pdf) for the project wireframes.
+
+### Database ###
+
+* I have created a database schema using [dbdiagram](https://dbdiagram.io/home) to give a visual representation of the databases within the project and the relations
+between them.
+* The schema is shown below.
+![database schema](docs/images/dbschema.png)
 
 ### Design ###
 
