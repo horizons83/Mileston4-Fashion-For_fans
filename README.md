@@ -7,6 +7,33 @@ Fashion For Fans is an e-commerce web application developed as part of
 
 ![Hero Screenshot](docs/images/multi-device.png)
 
+# Table of contents
+
+- [![Fashion For Fans Logo](docs/images/logo.png)](#fashion-for-fans-logodocsimageslogopng)
+  - [User Stories](#user-stories)
+  - [Strategy Goals:](#strategy-goals)
+    - [Business Goals](#business-goals)
+    - [User Goals](#user-goals)
+  - [Scope](#scope)
+  - [Wireframes](#wireframes)
+  - [Database](#database)
+  - [Design](#design)
+  - [Icons](#icons)
+  - [Font](#font)
+  - [Defensive Design](#defensive-design)
+- [Technologies](#technologies)
+  - [Languages and Frameworks](#languages-and-frameworks)
+  - [Tools](#tools)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Future Features](#future-features)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Requirements](#requirements)
+  - [Local Deployment](#local-deployment)
+  - [Heroku Deployment](#heroku-deployment)
+- [Credits](#credits)
+
 ### User Stories ###
 
 After viewing the Boutique Ado mini project, I decided to organize the user stories of this project in a spreadsheet rather then listing them here as they are extensive and a spreadsheet was also easier for me to follow through the development of this project.
@@ -21,7 +48,7 @@ Please [**click here**](https://docs.google.com/spreadsheets/d/1krBP_wim73PIZY5i
 * Offer a platform where fans can get the latest F1 news on the blog.
 * To allow users to leave reviews on products to control product quality and popularity.
 * To create a stock of products to be sold online and keep track of the sales as an admin.
-* To be able to create/update/delete products and their infomation as an admin
+* To be able to create/update/delete products and their information as an admin
 * To enable users to create an account for future purchases.
 
 #### User Goals ####
@@ -70,7 +97,7 @@ between them.
 
 ### Design ###
 
-The store has been desgined using dark colours with contrasting white. The reason for this is because of displaying items
+The store has been designed using dark colours with contrasting white. The reason for this is because of displaying items
 from multiple teams all using different vivid colours I didn't want to over saturate the eye. The only place to use a different colour
 is the buttons which have an orange colour on hover.\
 I have created a palette using [coolors](https://coolors.co/) which is displayed below.\
@@ -137,7 +164,7 @@ I have created a palette using [coolors](https://coolors.co/) which is displayed
 ## Features ##
 ---
 
-### Existiting Features ###
+### Existing Features ###
 
 **Responsiveness**
 
@@ -196,7 +223,7 @@ I have created a palette using [coolors](https://coolors.co/) which is displayed
 
 5. Product management:
 * If the user is logged in as an admin, they will have the possibility to navigate to the Product management page (through the profile dropdown menu in the main navigation bar) and have the possibility to add a product to the database by filling the add product form. Images can be selected directly from the user's computer and not only as url linked images.
-* Only the admins can edit and/or delete any product by navigating on a product detail page and click on the edit/delete links.The edit link redirects to a edit form while the delete link triggers a confirmation modal and permanently deletes the product from the database if "Delete" is clicked in the modal.
+* Only the admins can edit and/or delete any product by navigating on a product detail page and click on the edit/delete links. The edit link redirects to a edit form while the delete link triggers a confirmation modal and permanently deletes the product from the database if "Delete" is clicked in the modal.
 
 
 **Shopping bag App**
@@ -275,10 +302,16 @@ with their current comment.
 * The Contact page allows the user to send a written query to the admin. The query is stored in the database and two email alerts are sent: one to the user to confirm that the message was received and one to the admin to notify admin that a user has sent a query. The alert sent to the admin contains all information given by the user in the contact form.
 * The user does not need to be a registered user to send a query.
 
+### Future Features ###
+
+* The possibility to add different stock per product sizes.
+* Sale prices.
+* Social Media login (ex: Google, Facebook...).
+
 ## Testing ##
 ---
 
-All apps and features have been manually tested,  please [click here]() to access the testing document
+All apps and features have been manually tested,  please [click here](TESTING.md) to access the testing document
 
 
 ## Deployment ##
@@ -318,7 +351,7 @@ pip3 install -r requirements.txt
 
 **3. Store environment variables**
 
-* If you decide to use Gitpod for the development of this project and you can store your environement variables directly in Gitpod by clicking on "Settings" on the Worspaces page then inserted the following variables in  the "Environement Variables" section :
+* If you decide to use Gitpod for the development of this project and you can store your environment variables directly in Gitpod by clicking on "Settings" on the Worspaces page then adding the following variables in  the "Environment Variables" section :
 
 ```
 'DEVELOPMENT', 'True'
@@ -343,7 +376,7 @@ os.environ["DEVELOPMENT"] = "True"
 * Follow these instructions to fill in the values of each keys:
     - the SECRET_KEY : use a Django Secret Key Generator such as [miniwebtool](https://miniwebtool.com/django-secret-key-generator/)
     - the STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY can be found on the Stripe Dashboard in the Developer's API section.
-    - the STRIPE_WH_SECRET: Can be found in the Developer'sAPI section after creating a webhook.
+    - the STRIPE_WH_SECRET: Can be found in the Developer's API section after creating a webhook.
 
 **4. Migrate database models**
 
@@ -436,7 +469,7 @@ git push
 
 **5. Remove DATABASE_URL variable**
 
-* Delete the temporary DATABASE_URL from your environement variables or env.py.
+* Delete the temporary DATABASE_URL from your environment variables or env.py.
 
 **6. Install Heroku CLI and login**
 
@@ -484,6 +517,7 @@ The app can now be open at https://< your-app-name >.herokuapp.com/
 ---
 **Code Tutorials**
 * This project was referenced to the BOUTIQUE ADO project from CI
+* Stack Overflow for [flushing footer to bottom](https://stackoverflow.com/questions/10099422/flushing-footer-to-bottom-of-the-page-twitter-bootstrap/20971428#20971428)
 
 **Hero Image**
 * The hero image was taken from [Wallpaperforu](https://wallpaperforu.com/wallpaper-formula-1-mercedes-benz-mercedes-f1-lewis/)
@@ -497,5 +531,5 @@ The app can now be open at https://< your-app-name >.herokuapp.com/
 
 **Other Credits**
 * Audrey Lloancy for inspiration for contact and review/comment options.
-* My mentor Gerry Mcbride for his continued guidence.
+* My mentor Gerry Mcbride for his continued guidance.
 * CI for the fantastic opportunity.
