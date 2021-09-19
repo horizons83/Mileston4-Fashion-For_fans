@@ -2,54 +2,62 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
 
     {% block meta %}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Formula 1 fashion and collectables and Formula 1 news">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Formula 1 fashion and collectables and Formula 1 news">
     {% endblock %}
 
     {% block extra_meta %}
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon-16x16.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ MEDIA_URL }}apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ MEDIA_URL }}favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ MEDIA_URL }}favicon-16x16.png">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
-        <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <!-- Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <!-- GSAP -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <!-- Stripe -->
-        <script src="https://js.stripe.com/v3/"></script>
-        <script src="{% static 'js/footer.js' %}"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'js/footer.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
     {% endblock %}
-
+    <!-- Title -->
     <title>Fashion For Fans {% block extra_title %}{% endblock %}</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header class="container-fluid fixed-top">
-        
+        <!-- Main Navigation bar -->
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex top-nav">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -59,9 +67,11 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded" type="text" name="q" aria-label="search our site" placeholder="Search our site">
+                        <input class="form-control border border-black rounded" type="text" name="q"
+                            aria-label="search our site" placeholder="Search our site">
                         <div class="input-group-append">
-                            <button class="form-control btn btn-black border border-black rounded" aria-label="search" type="submit">
+                            <button class="form-control btn btn-black border border-black rounded" aria-label="search"
+                                type="submit">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -70,10 +80,12 @@
                     </div>
                 </form>
             </div>
+            <!-- Dropdown menu -->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                     <li class="list-inline-item dropdown">
-                        <a class="text-white nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="text-white nav-link" href="#" id="user-options" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
                                 <p class="my-0">My Account</p>
@@ -81,31 +93,33 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                                <a href="{% url 'add_blogpost' %}" class="dropdown-item">Blog Management</a>
-                                {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                            <a href="{% url 'add_blogpost' %}" class="dropdown-item">Blog Management</a>
+                            {% endif %}
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                             {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                             {% endif %}
                         </div>
                     </li>
+                    <!-- Bag -->
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link" href="{% url 'view_bag' %}">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-white{% endif %} nav-link"
+                            href="{% url 'view_bag' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i>
                                     {% if bag_items %}
-                                        <span class="badge rounded-pill">{{ product_count }}</span>
+                                    <span class="badge rounded-pill">{{ product_count }}</span>
                                     {% endif %}
                                 </div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                        £{{ grand_total|floatformat:2 }}
+                                    £{{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        £0.00
+                                    £0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -115,102 +129,117 @@
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"></div>
         </div>
+        <!-- Mobile nav bar -->
         <div class="row bg-dark">
             <nav class="navbar navbar-expand-lg navbar-dark w-100">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
             </nav>
         </div>
+        <!-- Delivery Banner -->
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-white text-black">
-                <h4 class="logo-font-banner my-1 flash">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
+                <h4 class="logo-font-banner my-1 flash">Free delivery on orders over £{{ free_delivery_threshold }}!
+                </h4>
             </div>
         </div>
-        </header>
+    </header>
 
-        {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+    {% if messages %}
+    <!-- Toasts -->
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
         {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
-        {% block page_header %}
-        {% endblock %}
+    {% block page_header %}
+    {% endblock %}
 
-        {% block content %}
-        {% endblock %}
-            <div class="footer" id="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-3 pb-2">
-                            <h5>About Us</h5>
-                            <p class="text-justify-center">Get all the latest Formula 1 fashion, collectables and F1 news right here!</p>
-                        </div>
-                        <div class="col-xs-6 col-md-3 pb-2">
-                            <h5>Worry Free Shopping</h5>
-                            <ul class="Shopping Info">
-                                <li><a class="text-white" href="{% url 'storedetails' %}" rel="noreferrer" aria-label="safe shopping">Safe Shopping</a></li>
-                                <li><a class="text-white" href="{% url 'delivery' %}" rel="noreferrer" aria-label="delivery">Delivery & Shipping</a></li>
-                                <li><a class="text-white" href="{% url 'returns' %}" rel="noreferrer" aria-label="returns">90-Day Returns</a></li>
-                            </ul>
-                        </div>
-                        <!-- Social Media -->
-                        <div class="col-xs-6 col-md-3 pb-2">
-                            <h5>Social Media</h5>
-                            <ul class="social-icons">
-                                <li><a class="facebook" href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="instagram" href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Contact Button -->
-                        <div class="col-xs-6 col-md-3 pb-2">
-                            <h5>Any Questions ?</h5>
-                            <ul class="footer-links">
-                                <li><a href="{% url 'contact' %}" class="btn btn-lg btn-outline-white rounded-0" aria-label="contact">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
+    {% block content %}
+    {% endblock %}
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 pb-2">
+                    <h5>About Us</h5>
+                    <p class="text-justify-center">Get all the latest Formula 1 fashion, collectables and F1 news right
+                        here!</p>
                 </div>
-                <!-- Copyright -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="small copyright text-center">Copyright &copy; 2021<br> Fashion For Fans, Inc.
-                                and/or its affiliated entities. All Rights Reserved. 
-                            </p>
-                            <p class="small text-center">
-                                Site for educational purposes only,<br>
-                                Euan Fennell Milestone 4 project.
-                            </p> 
-                        </div>
-                    </div>
+                <div class="col-xs-6 col-md-3 pb-2">
+                    <h5>Worry Free Shopping</h5>
+                    <ul class="Shopping Info">
+                        <li><a class="text-white" href="{% url 'storedetails' %}" rel="noreferrer"
+                                aria-label="safe shopping">Safe Shopping</a></li>
+                        <li><a class="text-white" href="{% url 'delivery' %}" rel="noreferrer"
+                                aria-label="delivery">Delivery & Shipping</a></li>
+                        <li><a class="text-white" href="{% url 'returns' %}" rel="noreferrer"
+                                aria-label="returns">90-Day Returns</a></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div class="col-xs-6 col-md-3 pb-2">
+                    <h5>Social Media</h5>
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="https://www.facebook.com" target="_blank" rel="noreferrer"
+                                aria-label="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="https://twitter.com" target="_blank" rel="noreferrer"
+                                aria-label="twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="instagram" href="https://www.instagram.com" target="_blank" rel="noreferrer"
+                                aria-label="instagram"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Button -->
+                <div class="col-xs-6 col-md-3 pb-2">
+                    <h5>Any Questions ?</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'contact' %}" class="btn btn-lg btn-outline-white rounded-0"
+                                aria-label="contact">Contact Us</a></li>
+                    </ul>
                 </div>
             </div>
+            <hr>
+        </div>
+        <!-- Copyright -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <p class="small copyright text-center">Copyright &copy; 2021<br> Fashion For Fans, Inc.
+                        and/or its affiliated entities. All Rights Reserved.
+                    </p>
+                    <p class="small text-center">
+                        Site for educational purposes only,<br>
+                        Euan Fennell Milestone 4 project.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        {% block postloadjs %}
-            <script>
-                $('.toast').toast('show');
-            </script>
-            
-        {% endblock %}
+    {% block postloadjs %}
+    <script>
+        $('.toast').toast('show');
+    </script>
 
-    </body>
+    {% endblock %}
+
+</body>
+
 </html>
